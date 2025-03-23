@@ -9,4 +9,5 @@ public:
 	Vec2 scale;
 
 	Transform operator=(Transform other);
+	Vec2 WorldPosition();
 };

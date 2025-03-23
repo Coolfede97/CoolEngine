@@ -62,5 +62,8 @@
     <ClInclude Include="Transform.h">
       <Filter>Fundamentals\hFiles</Filter>
     </ClInclude>
+    <ClInclude Include="Jugador.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

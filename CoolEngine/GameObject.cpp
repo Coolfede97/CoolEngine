@@ -16,11 +16,17 @@ void GameObject::Draw()
 {
 	// Draw stuff
 }
+GameObject GameObject::operator=(GameObject other)
+{
+	transform = other.transform;
+	name = other.name;
+	return *this;
+}
 GameObject::GameObject(Transform transform_in, string name_in, bool active_in)
 {
 	transform = transform_in; 
 	name = name_in;
-	Game::gameObjects.push_back(*this);
+	Game::gameObjects.push_back(this);
 	if (active_in) Start();
 }
 

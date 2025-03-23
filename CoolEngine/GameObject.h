@@ -11,4 +11,6 @@ public:
 	virtual void Start();
 	virtual void Update();
 	virtual void Draw();
+
+	GameObject operator=(GameObject other);
 };

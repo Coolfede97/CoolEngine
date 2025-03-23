@@ -30,6 +30,7 @@
   <ItemGroup>
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Jugador.h" />
     <ClInclude Include="TestPlayer.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="Vec2.h" />
