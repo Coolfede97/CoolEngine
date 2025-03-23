@@ -1,8 +1,8 @@
 #include <iostream>
+#include <string>
 #include "GameObject.h"
 #include "Game.h"
 #include "Transform.h"
-#include <string>
 using namespace std;
 void GameObject::Start()
 {
@@ -11,6 +11,10 @@ void GameObject::Start()
 void GameObject::Update()
 {
 	// Do Stuff
+}
+void GameObject::Draw()
+{
+	// Draw stuff
 }
 GameObject::GameObject(Transform transform_in, string name_in, bool active_in)
 {

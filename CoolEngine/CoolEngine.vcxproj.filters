@@ -40,6 +40,9 @@
       <Filter>Fundamentals\cppFiles</Filter>
     </ClCompile>
     <ClCompile Include="GameObject.cpp">
+      <Filter>Fundamentals\cppFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Jugador.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>

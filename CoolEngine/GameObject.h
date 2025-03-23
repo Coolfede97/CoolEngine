@@ -8,6 +8,7 @@ public:
 	GameObject(Transform transform_in=Transform(), string name_in="newGameObject", bool active = true);
 	Transform transform;
 	string name;
-	void Start();
-	void Update();
+	virtual void Start();
+	virtual void Update();
+	virtual void Draw();
 };
