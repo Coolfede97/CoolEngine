@@ -57,6 +57,48 @@ const Vec2 Vec2::Down() { return Vec2(0, -1); }
 const Vec2 Vec2::Zero() { return Vec2(0, 0); }
 const Vec2 Vec2::One() { return Vec2(1, 1); }
 
+Vec2 Vec2::operator=(Vec2 other) 
+{
+    this->x = other.x;
+    this->y = other.y;
+    return *this;
+}
+
+Vec2 Vec2::operator+=(Vec2 other) 
+{
+    this->x += other.x;
+    this->y += other.y;
+    return *this;
+}
+
+Vec2 Vec2::operator-=(Vec2 other) 
+{
+    this->x -= other.x;
+    this->y -= other.y;
+    return *this;
+}
+
+Vec2 Vec2::operator*=(Vec2 other) 
+{
+    this->x *= other.x;
+    this->y *= other.y;
+    return *this;
+}
+
+Vec2 Vec2::operator/=(Vec2 other) 
+{
+    this->x /= other.x;
+    this->y /= other.y;
+    return *this;
+}
+
+Vec2 Vec2::operator*=(double number) 
+{
+    this->x *= number;
+    this->y *= number;
+    return *this;
+}
+
 std::ostream& operator<<(std::ostream& os, const Vec2& v)
 {
     os << "(" << v.x << ", " << v.y << ")";

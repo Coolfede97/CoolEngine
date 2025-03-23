@@ -12,7 +12,7 @@ Game::Game(int width, int height, int fps, string title)
 	assert(!GetWindowHandle());
 	SetTargetFPS(fps);
 	player = TestPlayer(Vec2(0.0, 150), 300, WHITE);
-
+	Start();
 	InitWindow(width, height, title.c_str());
 }
 
@@ -25,6 +25,11 @@ Game::~Game() noexcept
 bool Game::GameShouldClose() const
 {
 	return WindowShouldClose();
+}
+
+void Game::Start()
+{
+	// Probably Create GameObjects and Add them to gameObjects
 }
 
 void Game::Tick()
@@ -43,5 +48,5 @@ void Game::Draw()
 
 void Game::Update()
 {
-	player.position.x += player.speed * GetFrameTime();
+	player.position += Vec2::Right() * player.speed * GetFrameTime();
 }

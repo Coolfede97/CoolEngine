@@ -28,14 +28,12 @@ public:
     static const Vec2 Zero();
     static const Vec2 One();
 
-    Vec2 operator=(Vec2 other)
-    {
-        this->x = other.x;
-        this->y = other.y;
-
-        return *this;
-    }
-
+    Vec2 operator=(Vec2 other);
+    Vec2 operator+=(Vec2 other);
+    Vec2 operator-=(Vec2 other);
+    Vec2 operator*=(Vec2 other);
+    Vec2 operator/=(Vec2 other);
+    Vec2 operator*=(double number);
     friend std::ostream& operator<<(std::ostream& os, const Vec2& v);
 };
 

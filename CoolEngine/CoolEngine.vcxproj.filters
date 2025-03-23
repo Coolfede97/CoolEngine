@@ -16,30 +16,48 @@
     <Filter Include="Fundamentals">
       <UniqueIdentifier>{b6e66472-70af-401a-a41d-56d0d436c53b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fundamentals\hFiles">
+      <UniqueIdentifier>{19ffcedf-f339-45e9-8111-ddc9a166470d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fundamentals\cppFiles">
+      <UniqueIdentifier>{fdcd20c0-4ecd-4f0d-b8d0-8fcba581b9cd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Game.cpp">
-      <Filter>Fundamentals</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Fundamentals</Filter>
+    <ClCompile Include="TestPlayer.cpp">
+      <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="Vec2.cpp">
-      <Filter>Fundamentals</Filter>
+      <Filter>Fundamentals\cppFiles</Filter>
     </ClCompile>
-    <ClCompile Include="TestPlayer.cpp">
+    <ClCompile Include="main.cpp">
+      <Filter>Fundamentals\cppFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Fundamentals\cppFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>Fundamentals\cppFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game.h">
-      <Filter>Fundamentals</Filter>
-    </ClInclude>
-    <ClInclude Include="Vec2.h">
-      <Filter>Fundamentals</Filter>
-    </ClInclude>
     <ClInclude Include="TestPlayer.h">
       <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Vec2.h">
+      <Filter>Fundamentals\hFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Fundamentals\hFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Fundamentals\hFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>Fundamentals\hFiles</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
