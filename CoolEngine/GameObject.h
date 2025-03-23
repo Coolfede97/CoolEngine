@@ -9,4 +9,5 @@ public:
 	Transform transform;
 	string name;
 	void Start();
+	void Update();
 };

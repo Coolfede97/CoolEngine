@@ -48,5 +48,9 @@ void Game::Draw()
 
 void Game::Update()
 {
+	for (GameObject GO : gameObjects)
+	{
+		GO.Update();
+	}
 	player.position += Vec2::Right() * player.speed * GetFrameTime();
 }
