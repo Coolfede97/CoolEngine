@@ -2,8 +2,13 @@
 #include <iostream>
 using namespace std;
 #include <string>
-
 class GameObject;
+
+enum class ComponentOfType
+{
+	Transform,
+	Renderer
+};
 
 class Component
 {

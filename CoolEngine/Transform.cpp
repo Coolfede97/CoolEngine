@@ -2,7 +2,10 @@
 using namespace std;
 #include "Transform.h"
 #include "Game.h"
-Transform::Transform(Vec2 pos_in, Vec2 scale_in)
+#include "GameObject.h"
+#include "Component.h"
+Transform::Transform(GameObject* owner_in, Vec2 pos_in, Vec2 scale_in)
+: Component(owner_in, "Transform")
 {
 	position = pos_in;
 	scale = scale_in;

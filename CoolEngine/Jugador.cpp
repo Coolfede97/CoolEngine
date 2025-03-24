@@ -9,12 +9,12 @@ using namespace std;
 void Jugador::Update()
 {
 	GameObject::Update();
-	transform.position += Vec2::Right() * speed * GetFrameTime();
+	transform->position += Vec2::Right() * speed * GetFrameTime();
 }
 
 void Jugador::Draw()
 {
-	DrawRectangle(transform.WorldPosition().x, transform.WorldPosition().y, transform.scale.x, transform.scale.y, GREEN);
+	//DrawRectangle(transform->WorldPosition().x, transform->WorldPosition().y, transform->scale.x, transform->scale.y, GREEN);
 }
 
 void Jugador::Start()
