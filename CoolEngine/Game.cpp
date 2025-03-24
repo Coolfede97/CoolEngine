@@ -39,7 +39,7 @@ void Game::Start()
 {
 	// Probably Create GameObjects and Add them to gameObjects
 	gameObjects.push_back(new Jugador());
-	gameObjects[0]->components.push_back(new Renderer(gameObjects[0]));
+	gameObjects[0]->components.push_back(new Renderer(gameObjects[0],false));
 }
 
 void Game::Tick()
