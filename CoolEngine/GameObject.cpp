@@ -3,14 +3,23 @@
 #include "GameObject.h"
 #include "Game.h"
 #include "Transform.h"
+#include "Component.h"
 using namespace std;
 void GameObject::Start()
 {
 	// Do stuff
+	for (Component* component : components)
+	{
+		component->Start();
+	}
 }
 void GameObject::Update()
 {
 	// Do Stuff
+	for (Component* component : components)
+	{
+		component->Update();
+	}
 }
 void GameObject::Draw()
 {

@@ -8,6 +8,7 @@ using namespace std;
 #include <string>
 void Jugador::Update()
 {
+	GameObject::Update();
 	transform.position += Vec2::Right() * speed * GetFrameTime();
 	Draw();
 }

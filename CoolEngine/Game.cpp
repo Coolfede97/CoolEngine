@@ -9,6 +9,7 @@
 #include <vector>
 #include "GameObject.h"
 #include <string>
+#include "Renderer.h"
 using namespace std;
 
 Vec2 Game::screenSize = Vec2(0, 0);
@@ -37,7 +38,8 @@ bool Game::GameShouldClose() const
 void Game::Start()
 {
 	// Probably Create GameObjects and Add them to gameObjects
-	jugadorPointer = new Jugador();
+	gameObjects.push_back(new Jugador());
+	gameObjects[0]->components.push_back(new Renderer(gameObjects[0]));
 }
 
 void Game::Tick()

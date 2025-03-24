@@ -22,6 +22,9 @@
     <Filter Include="Fundamentals\cppFiles">
       <UniqueIdentifier>{fdcd20c0-4ecd-4f0d-b8d0-8fcba581b9cd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="BaseComponents">
+      <UniqueIdentifier>{3a6d7f2f-d1df-469c-99b7-bc515f71bb63}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TestPlayer.cpp">
@@ -45,6 +48,12 @@
     <ClCompile Include="Jugador.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TestPlayer.h">
@@ -64,6 +73,12 @@
     </ClInclude>
     <ClInclude Include="Jugador.h">
       <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>Fundamentals\hFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>BaseComponents</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

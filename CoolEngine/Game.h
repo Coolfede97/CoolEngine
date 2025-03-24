@@ -21,8 +21,6 @@ public:
 
 	static vector<GameObject*> gameObjects;
 	// Player Stuff
-	Jugador* jugadorPointer;
-
 private:
 	void Draw();
 	void Update();
