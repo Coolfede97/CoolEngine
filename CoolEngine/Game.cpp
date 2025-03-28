@@ -10,10 +10,11 @@
 #include "GameObject.h"
 #include <string>
 #include "Renderer.h"
+#include "Component.h"
 using namespace std;
 
 Vec2 Game::screenSize = Vec2(0, 0);
-vector<GameObject*> Game::gameObjects = {};
+//vector<GameObject*> Game::gameObjects{};
 Game::Game(int width, int height, int fps, string title)
 {
 	assert(!GetWindowHandle());
@@ -38,9 +39,11 @@ bool Game::GameShouldClose() const
 void Game::Start()
 {
 	// Probably Create GameObjects and Add them to gameObjects
+	GameObject* newGO = GameObject::Instantiate();
 	gameObjects.push_back(new Jugador());
-	gameObjects[0]->transform->scale = Vec2(50, 50);
-	gameObjects[0]->components[ComponentOfType::Renderer] = new Renderer(gameObjects[0],false);
+	newGO->transform->scale = Vec2(50, 50);
+	newGO->components[ComponentOfType::Renderer] = new Renderer(newGO, false);
+	newGO->GetComponent<Renderer>(ComponentOfType::Renderer)->color = GREEN;
 }
 
 void Game::Tick()

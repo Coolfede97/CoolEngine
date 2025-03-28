@@ -5,8 +5,9 @@ using namespace std;
 #include "GameObject.h"
 #include "raylib.h"
 
+
 Renderer::Renderer(GameObject* owner_in, bool isCircle_in, Color color_in, string name_in)
-	:Component(owner_in, name_in)
+	:Component(owner_in, ComponentOfType::Renderer, name_in)
 {
 	isCircle = isCircle_in;
 	color = color_in;
