@@ -1,20 +1,16 @@
 #include <iostream>
-#include "Game.h"
 #include <raylib.h>
 #include <assert.h>
-#include "Vec2.h"
-#include "TestPlayer.h"
+#include "CoolEngine.h"
 #include <cmath>
-#include "Jugador.h"
 #include <vector>
-#include "GameObject.h"
 #include <string>
-#include "Renderer.h"
-#include "Component.h"
 using namespace std;
 
+
+
 Vec2 Game::screenSize = Vec2(0, 0);
-//vector<GameObject*> Game::gameObjects{};
+vector<GameObject*> Game::gameObjects{};
 Game::Game(int width, int height, int fps, string title)
 {
 	assert(!GetWindowHandle());
@@ -39,11 +35,11 @@ bool Game::GameShouldClose() const
 void Game::Start()
 {
 	// Probably Create GameObjects and Add them to gameObjects
-	GameObject* newGO = GameObject::Instantiate();
-	gameObjects.push_back(new Jugador());
+	GameObject* newGO = new GameObject();
 	newGO->transform->scale = Vec2(50, 50);
 	newGO->components[ComponentOfType::Renderer] = new Renderer(newGO, false);
-	newGO->GetComponent<Renderer>(ComponentOfType::Renderer)->color = GREEN;
+	newGO->GetComponent<Renderer>()->color = GREEN;
+	newGO->components[ComponentOfType::Jugador] = new Jugador(newGO, 300);
 }
 
 void Game::Tick()

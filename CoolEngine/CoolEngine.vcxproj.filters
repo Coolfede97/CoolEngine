@@ -31,11 +31,11 @@
     <Filter Include="BaseComponents\hFiles">
       <UniqueIdentifier>{4f29abac-62c3-4a95-99b5-39237b5d28a1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Containers">
+      <UniqueIdentifier>{c5c9fdfc-7b8e-48f6-88b2-762ab3f88e66}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="TestPlayer.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="Vec2.cpp">
       <Filter>Fundamentals\cppFiles</Filter>
     </ClCompile>
@@ -62,9 +62,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="TestPlayer.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="Vec2.h">
       <Filter>Fundamentals\hFiles</Filter>
     </ClInclude>
@@ -85,6 +82,15 @@
     </ClInclude>
     <ClInclude Include="Renderer.h">
       <Filter>BaseComponents\hFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="CoolEngine.h">
+      <Filter>Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="CoolComponents.h">
+      <Filter>Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="CoolPhysics.h">
+      <Filter>Containers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

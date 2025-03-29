@@ -1,19 +1,18 @@
 #pragma once
 using namespace std;
-#include <string>
-#include <vector>
-#include "GameObject.h"
-#include "TestPlayer.h"
-#include "Vec2.h"
-#include "Jugador.h"
-#include <string>
-#include <unordered_map>
 
 enum class SceneGameObjects
 {
 	Untagged,
 	Jugador
 };
+
+#include <string>
+#include <vector>
+#include "CoolEngine.h"
+#include <string>
+#include <unordered_map>
+
 
 class Game
 {

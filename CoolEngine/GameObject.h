@@ -2,12 +2,13 @@
 using namespace std;
 #include <iostream>
 #include <string>
-#include "Transform.h"
-#include "Component.h"
+#include "CoolComponents.h"
 #include <unordered_map>
 #include <vector>
 #include <atomic>
 #include "Game.h"
+
+
 class GameObject
 {
 public:
@@ -28,16 +29,16 @@ public:
 	GameObject operator=(const GameObject& other);
 
 	template<typename T>
-	T* GetComponent(ComponentOfType targetType);
+	T* GetComponent();
 
 };
 
 template<typename T>
-inline T* GameObject::GetComponent(ComponentOfType targetType)
+inline T* GameObject::GetComponent()
 {
 	for (const auto& component : components)
 	{
-		if (component.second->type == targetType)
+		if (dynamic_cast<T*>(component.second))
 		{
 			return dynamic_cast<T*>(component.second);
 		}

@@ -8,13 +8,7 @@ using namespace std;
 #include <string>
 void Jugador::Update()
 {
-	GameObject::Update();
-	transform->position += Vec2::Right() * speed * GetFrameTime();
-}
-
-void Jugador::Draw()
-{
-	//DrawRectangle(transform->WorldPosition().x, transform->WorldPosition().y, transform->scale.x, transform->scale.y, GREEN);
+	owner->transform->position += Vec2::Right() * speed * GetFrameTime();
 }
 
 void Jugador::Start()

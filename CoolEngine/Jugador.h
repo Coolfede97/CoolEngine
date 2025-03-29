@@ -4,15 +4,14 @@
 #include <string>
 #include "Game.h"
 using namespace std;
-class Jugador : public GameObject
+class Jugador : public Component
 {
 public:
-	Jugador(string name_in = "Jugador", bool active_in = true, double speed_in = 300)
-		: GameObject(name_in, SceneGameObjects::Jugador, active_in), speed(speed_in){}
+	Jugador(GameObject* owner_in, double speed_in = 300)
+		: Component(owner_in), speed(speed_in){}
 
 	double speed;
 	void Update() override;
-	void Draw() override;
 	void Start() override;
 
 };
