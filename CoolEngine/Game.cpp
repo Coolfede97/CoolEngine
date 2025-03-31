@@ -11,6 +11,7 @@ using namespace std;
 
 Vec2 Game::screenSize = Vec2(0, 0);
 vector<GameObject*> Game::gameObjects{};
+vector<GameObject*> Game::gameObjectsToAdd{};
 Game::Game(int width, int height, int fps, string title)
 {
 	assert(!GetWindowHandle());
@@ -53,7 +54,6 @@ void Game::Tick()
 void Game::Draw()
 {
 	ClearBackground(BLACK);
-	//DrawRectangle((int)player.position.x, (int)player.position.y, 50, 50, GREEN);
 }
 
 void Game::Update()
@@ -67,5 +67,7 @@ void Game::Update()
 		}
 		GO->Update();
 	}
-	//player.position += Vec2::Right() * player.speed * GetFrameTime();
+	for (GameObject* GO : gameObjectsToAdd) gameObjects.push_back(GO);
+	gameObjectsToAdd.clear();
 }
+

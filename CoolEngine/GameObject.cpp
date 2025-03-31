@@ -12,7 +12,8 @@ atomic<int> GameObject::lastID(0);
 
 void GameObject::Start()
 {
-	// Do stuff
+	// Do Stuff
+	startCalled = true;
 	for (const auto& component : components)
 	{
 		component.second->Start();
@@ -21,6 +22,7 @@ void GameObject::Start()
 void GameObject::Update()
 {
 	// Do Stuff
+	if (!startCalled && active) Start();
 	for (const auto& component : components)
 	{
 		component.second->Update();
@@ -40,18 +42,16 @@ GameObject GameObject::operator=(const GameObject& other)
 	name = other.name;
 	return *this;
 }
-GameObject::GameObject(string name_in, SceneGameObjects gameObjectType_in, bool active_in)
+GameObject::GameObject(string name_in, GameObjectsTags gameObjectTag_in, bool active_in)
 {
 	transform = new Transform(this);
 	name = name_in;
 	active = active_in;
-	gameObjectType = gameObjectType_in;
+	startCalled = false;
+	gameObjectTag = gameObjectTag_in;
 	lastID++;
 	ID = lastID;
-	cout << name << endl;
-	cout << ID << endl;
-	Game::gameObjects.push_back(this);
-	if (active_in) Start();
+	Game::gameObjectsToAdd.push_back(this);
 }
 
 

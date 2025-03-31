@@ -1,11 +1,12 @@
 #pragma once
 using namespace std;
 
-enum class SceneGameObjects
+enum class GameObjectsTags
 {
 	Untagged,
 	Jugador
 };
+
 
 #include <string>
 #include <vector>
@@ -25,10 +26,11 @@ public:
 	~Game() noexcept;
 	
 	bool GameShouldClose() const;
-	void Start();	
+	void Start();
 	void Tick();
 
 	static vector<GameObject*> gameObjects;
+	static vector<GameObject*> gameObjectsToAdd;
 	//static unordered_map<SceneGameObjects, GameObject*> gameObjects;
 	// Player Stuff
 private:

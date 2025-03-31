@@ -13,6 +13,5 @@ void Jugador::Update()
 
 void Jugador::Start()
 {
-
 }
 

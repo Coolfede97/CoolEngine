@@ -12,11 +12,12 @@ using namespace std;
 class GameObject
 {
 public:
-	GameObject(string name_in="newGameObject", SceneGameObjects gameObjectType_in = SceneGameObjects::Untagged, bool active_in = true);
+	GameObject(string name_in="newGameObject", GameObjectsTags gameObjectTag_in = GameObjectsTags::Untagged, bool active_in = true);
 	Transform* transform;
-	SceneGameObjects gameObjectType;
+	GameObjectsTags gameObjectTag;
 	string name;
 	bool active;
+	bool startCalled;
 	static atomic<int> lastID;
 	int ID;
 	unordered_map<ComponentOfType, Component*> components;

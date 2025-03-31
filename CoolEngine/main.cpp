@@ -1,6 +1,7 @@
 #include <iostream>
 #include <raylib.h>
 #include "Game.h"
+#include <vector>
 using namespace std;
 int main()
 {
