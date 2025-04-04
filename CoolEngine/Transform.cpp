@@ -4,11 +4,10 @@ using namespace std;
 #include "Game.h"
 #include "GameObject.h"
 #include "Component.h"
-Transform::Transform(GameObject* owner_in, Vec2 pos_in, Vec2 scale_in)
-: Component(owner_in, "Transform")
+Transform::Transform()
 {
-	position = pos_in;
-	scale = scale_in;
+	position = Vec2::Zero();
+	scale = Vec2::One();
 }
 
 Transform Transform::operator=(Transform other)

@@ -1,14 +1,20 @@
 #include "Component.h"
 #include "GameObject.h"
-Component::Component(GameObject* owner_in, string name_in)
+
+// The owner variable is defined in the AddComponent function of GameObject.pcc file
+Component::Component()
 {
-	owner = owner_in;
-	name = name_in;
+	
 }
 
 void Component::Update()
 {
 	// Do stuff
+}
+
+void Component::Draw()
+{
+	// Draw Stuff
 }
 
 void Component::Start()

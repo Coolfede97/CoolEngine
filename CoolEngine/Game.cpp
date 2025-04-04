@@ -33,14 +33,18 @@ bool Game::GameShouldClose() const
 	return WindowShouldClose();
 }
 
+// Called before update
+// Equivalent to the hierarchy of Unity. Used for set up
 void Game::Start()
 {
-	// Probably Create GameObjects and Add them to gameObjects
+	// Probably Create GameObjects and Add them to the vector gameObjects
 	GameObject* newGO = new GameObject();
+	newGO->tag = GameObjectsTags::Jugador;
+	cout << static_cast<int>(newGO->tag) << endl;
 	newGO->transform->scale = Vec2(50, 50);
-	newGO->components[ComponentOfType::Renderer] = new Renderer(newGO, false);
+	newGO->AddComponent<Renderer>();
 	newGO->GetComponent<Renderer>()->color = GREEN;
-	newGO->components[ComponentOfType::Jugador] = new Jugador(newGO, 300);
+	newGO->AddComponent<Jugador>();
 }
 
 void Game::Tick()
@@ -54,8 +58,18 @@ void Game::Tick()
 void Game::Draw()
 {
 	ClearBackground(BLACK);
+	for (GameObject* GO : gameObjects)
+	{
+		if (GO == nullptr)
+		{
+			cout << "PUNTERO NULL" << endl;
+			continue;
+		}
+		GO->Draw();
+	}
 }
 
+// Calls every object's Update in the scene, but no the ones from objects created in this frame
 void Game::Update()
 {
 	for (GameObject* GO : gameObjects)

@@ -6,16 +6,10 @@ using namespace std;
 #include "raylib.h"
 
 
-Renderer::Renderer(GameObject* owner_in, bool isCircle_in, Color color_in, string name_in)
-	:Component(owner_in, name_in)
+Renderer::Renderer()
 {
-	isCircle = isCircle_in;
-	color = color_in;
-}
-
-void Renderer::Update()
-{
-	Draw();
+	isCircle = false;
+	color = WHITE;
 }
 
 void Renderer::Draw()

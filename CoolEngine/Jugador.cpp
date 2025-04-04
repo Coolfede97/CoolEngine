@@ -6,6 +6,11 @@ using namespace std;
 #include "Vec2.h"
 #include "raylib.h"
 #include <string>
+
+Jugador::Jugador()
+{
+	speed = 300;
+}
 void Jugador::Update()
 {
 	owner->transform->position += Vec2::Right() * speed * GetFrameTime();

@@ -7,8 +7,7 @@ using namespace std;
 class Jugador : public Component
 {
 public:
-	Jugador(GameObject* owner_in, double speed_in = 300)
-		: Component(owner_in), speed(speed_in){}
+	Jugador();
 
 	double speed;
 	void Update() override;

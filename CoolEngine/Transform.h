@@ -4,7 +4,7 @@
 class Transform : public Component
 {
 public:
-	Transform(GameObject* owner_in, Vec2 pos_in = Vec2::Zero(), Vec2 scale_in = Vec2::One());
+	Transform();
 	Vec2 position;
 	Vec2 scale;
 	GameObject* owner;

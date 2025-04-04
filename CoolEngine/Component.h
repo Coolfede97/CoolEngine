@@ -5,22 +5,14 @@ using namespace std;
 #include <unordered_map>
 class GameObject;
 
-enum class ComponentOfType
-{
-	None,
-	Transform,
-	Renderer,
-	Jugador
-};
-
 class Component
 {
 public:
-	Component(GameObject* owner_in, string name_in = "");
+	Component();
 	GameObject* owner;
-	string name;
 	virtual void Update();
 	virtual void Start();
+	virtual void Draw();
 	virtual ~Component() = default;
 
 };
