@@ -37,14 +37,20 @@ bool Game::GameShouldClose() const
 // Equivalent to the hierarchy of Unity. Used for set up
 void Game::Start()
 {
+	GameObject* newGOR = new GameObject();
+	newGOR->tag = GameObjectsTags::Jugador;
+	newGOR->transform->scale = Vec2(100, 50);
+	newGOR->AddComponent<Renderer>();
+	newGOR->GetComponent<Renderer>()->color = RED;
+
 	// Probably Create GameObjects and Add them to the vector gameObjects
 	GameObject* newGO = new GameObject();
 	newGO->tag = GameObjectsTags::Jugador;
-	cout << static_cast<int>(newGO->tag) << endl;
 	newGO->transform->scale = Vec2(50, 50);
 	newGO->AddComponent<Renderer>();
 	newGO->GetComponent<Renderer>()->color = GREEN;
-	newGO->AddComponent<Jugador>();
+	//newGO->AddComponent<Jugador>();
+
 }
 
 void Game::Tick()

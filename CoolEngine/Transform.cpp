@@ -20,5 +20,5 @@ Transform Transform::operator=(Transform other)
 Vec2 Transform::WorldPosition()
 {
 	Vec2 screenHalfSize = Vec2(Game::screenSize.x / 2, Game::screenSize.y / 2);
-	return screenHalfSize + position;
+	return screenHalfSize + position - scale/2;
 }

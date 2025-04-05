@@ -26,6 +26,11 @@ Vec2 Vec2::operator/(Vec2 other) const
     return Vec2(x / other.x, y / other.y);
 }
 
+Vec2 Vec2::operator/(double number) const
+{
+    return Vec2(x / number, y / number);
+}
+
 double Vec2::magnitude()
 {
     return sqrt(x * x + y * y);

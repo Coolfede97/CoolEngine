@@ -16,6 +16,8 @@ public:
     Vec2 operator*(Vec2 other) const;
     Vec2 operator/(Vec2 other) const;
 
+    Vec2 operator/(double number) const;
+
     double magnitude();
     Vec2 normalized();
     Vec2 To(Vec2 target);
