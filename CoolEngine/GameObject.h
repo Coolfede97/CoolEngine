@@ -14,10 +14,16 @@ class GameObject
 {
 public:
 	GameObject(string name_in="newGameObject", GameObjectsTags gameObjectTag_in = GameObjectsTags::Untagged, bool active_in = true);
+	
 	Transform* transform;
+	
 	GameObjectsTags tag;
 	string name;
+	int renderingIndex;
 	bool active;
+	GameObject* father;
+	vector<GameObject*> children;
+
 	bool startCalled;
 	static atomic<int> lastID;
 	int ID;
@@ -27,13 +33,20 @@ public:
 	virtual void Draw();
 
 	static GameObject* Instantiate();
+	bool RemoveIn(vector<GameObject*>& vector);
 	void Destroy();
+
+	void MakeFatherOf(GameObject*& child_in);
+	void MakeChildOf(GameObject*& father_in);
 
 	virtual ~GameObject() = default;
 	GameObject operator=(const GameObject& other);
 
+
+
+
 	template<typename T>
-	void AddComponent();
+	T* AddComponent();
 
 	template<typename T>
 	T* GetComponent();
@@ -42,13 +55,11 @@ public:
 };
 
 template<typename T>
-inline void GameObject::AddComponent()
+inline T* GameObject::AddComponent()
 {
-	// TIENE BUENA PINTA, PERO FALTA ALGUNA MANERA DE ASIGNAR EL OWNER AL COMPONENT.
-	// PLAN: CAMBIAR EL CONSTRUCTOR PARA AGREGARLE EL OWNER CON "THIS" EN ESTA FUNCION
-	//newComponent.owner
 	components[typeid(T)] = new T();
 	components[typeid(T)]->owner = this;
+	return dynamic_cast<T*>(components[typeid(T)]);
 }
 
 template<typename T>

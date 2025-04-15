@@ -13,7 +13,7 @@ enum class GameObjectsTags
 #include "CoolEngine.h"
 #include <string>
 #include <unordered_map>
-
+#include <algorithm>
 
 class Game
 {

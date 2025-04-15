@@ -43,13 +43,14 @@ void Game::Start()
 	newGOR->AddComponent<Renderer>();
 	newGOR->GetComponent<Renderer>()->color = RED;
 
-	// Probably Create GameObjects and Add them to the vector gameObjects
 	GameObject* newGO = new GameObject();
+	newGO->renderingIndex = 1;
 	newGO->tag = GameObjectsTags::Jugador;
 	newGO->transform->scale = Vec2(50, 50);
 	newGO->AddComponent<Renderer>();
 	newGO->GetComponent<Renderer>()->color = GREEN;
-	//newGO->AddComponent<Jugador>();
+	newGO->AddComponent<Jugador>();
+	newGO->MakeFatherOf(newGOR);
 
 }
 
@@ -63,8 +64,13 @@ void Game::Tick()
 
 void Game::Draw()
 {
+	vector<GameObject*> GOsToDraw = gameObjects;
+	sort(GOsToDraw.begin(), GOsToDraw.end(), [](GameObject* a, GameObject* b)
+		{
+			return a->renderingIndex < b->renderingIndex;
+		});
 	ClearBackground(BLACK);
-	for (GameObject* GO : gameObjects)
+	for (GameObject* GO : GOsToDraw)
 	{
 		if (GO == nullptr)
 		{

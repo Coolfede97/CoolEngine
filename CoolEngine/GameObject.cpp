@@ -45,6 +45,21 @@ GameObject* GameObject::Instantiate()
 {
 	return new GameObject();
 }
+
+bool GameObject::RemoveIn(vector<GameObject*>& vector_in)
+{
+	for (int i = 0; i < vector_in.size(); i++)
+	{
+		if (vector_in[i]->ID == this->ID)
+		{
+			vector_in.erase(vector_in.begin() + i);
+			return true;
+		}
+	}
+	cout << "No se encontró el GameObject " << name << "al intentar eliminarlo del vector" << endl;
+	return false;
+}
+
 void GameObject::Destroy()
 {
 	vector<GameObject*>* gos = &Game::gameObjects;
@@ -57,7 +72,38 @@ void GameObject::Destroy()
 	{
 		if ((*gosToAdd)[i]->ID == this->ID) gosToAdd->erase(gosToAdd->begin() + i);
 	}
+	if (children.size() > 0)
+	{
+		for (GameObject* child : children)
+		{
+			child->Destroy();
+		}
+		if (father != nullptr)
+		{
+			this->RemoveIn(father->children);
+		}
+	}
 	delete this;
+}
+
+void GameObject::MakeFatherOf(GameObject*& child_in)
+{
+	if (child_in->ID != ID)
+	{
+		children.push_back(child_in);
+		child_in->father = this;
+	}
+	else cout << "UN PADRE NO PUEDE SER SU PROPIO HIJO" << endl;
+}
+
+void GameObject::MakeChildOf(GameObject*& father_in)
+{
+	if (father_in->ID != ID)
+	{
+		father_in->children.push_back(this);
+		father = father_in;
+	}
+	else cout << "UN HIJO NO PUEDE SER SU PROPIO PADRe" << endl;
 }
 
 GameObject GameObject::operator=(const GameObject& other)
@@ -69,9 +115,10 @@ GameObject GameObject::operator=(const GameObject& other)
 
 GameObject::GameObject(string name_in, GameObjectsTags gameObjectTag_in, bool active_in)
 {
-	transform = new Transform();
+	transform = AddComponent<Transform>();
 	name = name_in;
 	active = active_in;
+	renderingIndex = 0;
 	startCalled = false;
 	tag = gameObjectTag_in;
 	lastID++;

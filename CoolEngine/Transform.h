@@ -7,7 +7,6 @@ public:
 	Transform();
 	Vec2 position;
 	Vec2 scale;
-	GameObject* owner;
 	Transform operator=(Transform other);
 	Vec2 WorldPosition();
 };
