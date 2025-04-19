@@ -5,6 +5,7 @@
 #include "Transform.h"
 #include "Component.h"
 #include <atomic>
+#include <assert.h>
 using namespace std;
 
 
@@ -41,10 +42,7 @@ void GameObject::Draw()
 		component.second->Draw();
 	}
 }
-//GameObject* GameObject::Instantiate()
-//{
-//	return new GameObject();
-//}
+
 
 bool GameObject::RemoveIn(vector<GameObject*>& vector_in)
 {
@@ -96,38 +94,12 @@ void GameObject::Destroy()
 
 void GameObject::MakeFatherOf(GameObject*& child_in)
 {
-	if (child_in->ID != ID)
-	{
-		if (!child_in->IsIn(children))
-		{
-			if (father != child_in)
-			{
-				children.push_back(child_in);
-				child_in->father = this;
-			}
-			else cout << "THE GAMEOBJECT CALLED " + child_in->name + " IS THE FATHER OF "+name+", SO " + name + "CAN'T BE THE FATHER OF "+child_in->name << endl;
-		}
-		else cout << "THE GAMEOBJECT CALLED " + name + " IS ALREADY THE FATHER OF " + child_in->name << endl;
-	}
-	else cout << "A FATHER CAN'T BE ITS OWN CHILD" << endl;
-}
-
-void GameObject::MakeChildOf(GameObject*& father_in)
-{
-	if (father_in->ID != ID)
-	{
-		if (!IsIn(father_in->children))
-		{
-			if (father_in->father != this)
-			{
-				father_in->children.push_back(this);
-				father = father_in;
-			}
-			else cout << "THE GAMEOBJECT CALLED " + name + "IS THE FATHER OF THE GAMEOBJECT "+father_in->name + ", SO "+name+"CAN'T BE THE CHILD" << endl;
-		}
-		else cout << "THE GAMEOBJECT CALLED " + name + " IS ALREADY THE CHILD OF " + father_in->name << endl;
-	}
-	else cout << "A CHILD CAN'T BE ITS OWN FATHER" << endl;
+	assert(child_in->ID != ID, "A FATHER CAN'T BE ITS OWN CHILD");
+	assert(!child_in->IsIn(children), "THE GAMEOBJECT CALLED " + name + " IS ALREADY THE FATHER OF " + child_in->name);
+	assert(father != child_in, "THE GAMEOBJECT CALLED " + child_in->name + " IS THE FATHER OF " + name + ", SO " + name + "CAN'T BE THE FATHER OF " + child_in->name);
+	children.push_back(child_in);
+	child_in->father = this;
+	
 }
 
 GameObject GameObject::operator=(const GameObject& other)

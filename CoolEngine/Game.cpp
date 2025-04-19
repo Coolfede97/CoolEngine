@@ -48,9 +48,7 @@ void Game::Start()
 	newGO->GetComponent<Renderer>()->color = GREEN;
 	newGO->AddComponent<Jugador>();
 	newGO->MakeFatherOf(newGOR);
-	newGOR->MakeChildOf(newGO);
-
-	newGOR->Destroy();
+	//newGOR->Destroy();
 }
 
 void Game::Tick()
