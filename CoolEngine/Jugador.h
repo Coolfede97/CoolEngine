@@ -8,7 +8,6 @@ class Jugador : public Component
 {
 public:
 	Jugador();
-
 	double speed;
 	void Update() override;
 	void Start() override;

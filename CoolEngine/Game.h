@@ -30,9 +30,7 @@ public:
 	void Tick();
 
 	static vector<GameObject*> gameObjects;
-	static vector<GameObject*> gameObjectsToAdd;
-	//static unordered_map<SceneGameObjects, GameObject*> gameObjects;
-	// Player Stuff
+
 private:
 	void Draw();
 	void Update();

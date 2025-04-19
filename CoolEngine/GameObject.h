@@ -4,10 +4,10 @@ using namespace std;
 #include <string>
 #include <typeindex>
 #include "CoolComponents.h"
+#include "Game.h"
 #include <unordered_map>
 #include <vector>
 #include <atomic>
-#include "Game.h"
 
 
 class GameObject
@@ -32,8 +32,8 @@ public:
 	virtual void Update();
 	virtual void Draw();
 
-	static GameObject* Instantiate();
-	bool RemoveIn(vector<GameObject*>& vector);
+	bool RemoveIn(vector<GameObject*>& vector_in);
+	bool IsIn(vector<GameObject*>& vector_in);
 	void Destroy();
 
 	void MakeFatherOf(GameObject*& child_in);
@@ -41,9 +41,6 @@ public:
 
 	virtual ~GameObject() = default;
 	GameObject operator=(const GameObject& other);
-
-
-
 
 	template<typename T>
 	T* AddComponent();

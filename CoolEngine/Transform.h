@@ -8,5 +8,6 @@ public:
 	Vec2 position;
 	Vec2 scale;
 	Transform operator=(Transform other);
-	Vec2 WorldPosition();
+	Vec2 LocalPos();
+	Vec2 WorldPos();
 };

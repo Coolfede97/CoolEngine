@@ -7,11 +7,8 @@
 #include <string>
 using namespace std;
 
-
-
 Vec2 Game::screenSize = Vec2(0, 0);
 vector<GameObject*> Game::gameObjects{};
-vector<GameObject*> Game::gameObjectsToAdd{};
 Game::Game(int width, int height, int fps, string title)
 {
 	assert(!GetWindowHandle());
@@ -51,7 +48,9 @@ void Game::Start()
 	newGO->GetComponent<Renderer>()->color = GREEN;
 	newGO->AddComponent<Jugador>();
 	newGO->MakeFatherOf(newGOR);
+	newGOR->MakeChildOf(newGO);
 
+	newGOR->Destroy();
 }
 
 void Game::Tick()
@@ -70,7 +69,7 @@ void Game::Draw()
 			return a->renderingIndex < b->renderingIndex;
 		});
 	ClearBackground(BLACK);
-	for (GameObject* GO : GOsToDraw)
+	for (auto& GO : GOsToDraw)
 	{
 		if (GO == nullptr)
 		{
@@ -84,16 +83,15 @@ void Game::Draw()
 // Calls every object's Update in the scene, but no the ones from objects created in this frame
 void Game::Update()
 {
-	for (GameObject* GO : gameObjects)
+	vector<GameObject*> updateGOS = gameObjects;
+	for (auto& GO : updateGOS)
 	{
 		if (GO == nullptr)
 		{
-			cout << "PUNTERO NULL" << endl;
+			cout << "NULL POINTER" << endl;
 			continue;
 		}
 		GO->Update();
 	}
-	for (GameObject* GO : gameObjectsToAdd) gameObjects.push_back(GO);
-	gameObjectsToAdd.clear();
 }
 

@@ -41,10 +41,10 @@ void GameObject::Draw()
 		component.second->Draw();
 	}
 }
-GameObject* GameObject::Instantiate()
-{
-	return new GameObject();
-}
+//GameObject* GameObject::Instantiate()
+//{
+//	return new GameObject();
+//}
 
 bool GameObject::RemoveIn(vector<GameObject*>& vector_in)
 {
@@ -60,17 +60,25 @@ bool GameObject::RemoveIn(vector<GameObject*>& vector_in)
 	return false;
 }
 
+bool GameObject::IsIn(vector<GameObject*>& vector_in)
+{
+	for (int i = 0; i < vector_in.size(); i++)
+	{
+		if (vector_in[i]->ID == this->ID)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+
 void GameObject::Destroy()
 {
 	vector<GameObject*>* gos = &Game::gameObjects;
-	vector<GameObject*>* gosToAdd = &Game::gameObjectsToAdd;
 	for (int i = 0; i < gos->size(); i++)
 	{
 		if ((*gos)[i]->ID == this->ID) gos->erase(gos->begin() + i);
-	}
-	for (int i = 0; i < gosToAdd->size(); i++)
-	{
-		if ((*gosToAdd)[i]->ID == this->ID) gosToAdd->erase(gosToAdd->begin() + i);
 	}
 	if (children.size() > 0)
 	{
@@ -90,20 +98,36 @@ void GameObject::MakeFatherOf(GameObject*& child_in)
 {
 	if (child_in->ID != ID)
 	{
-		children.push_back(child_in);
-		child_in->father = this;
+		if (!child_in->IsIn(children))
+		{
+			if (father != child_in)
+			{
+				children.push_back(child_in);
+				child_in->father = this;
+			}
+			else cout << "THE GAMEOBJECT CALLED " + child_in->name + " IS THE FATHER OF "+name+", SO " + name + "CAN'T BE THE FATHER OF "+child_in->name << endl;
+		}
+		else cout << "THE GAMEOBJECT CALLED " + name + " IS ALREADY THE FATHER OF " + child_in->name << endl;
 	}
-	else cout << "UN PADRE NO PUEDE SER SU PROPIO HIJO" << endl;
+	else cout << "A FATHER CAN'T BE ITS OWN CHILD" << endl;
 }
 
 void GameObject::MakeChildOf(GameObject*& father_in)
 {
 	if (father_in->ID != ID)
 	{
-		father_in->children.push_back(this);
-		father = father_in;
+		if (!IsIn(father_in->children))
+		{
+			if (father_in->father != this)
+			{
+				father_in->children.push_back(this);
+				father = father_in;
+			}
+			else cout << "THE GAMEOBJECT CALLED " + name + "IS THE FATHER OF THE GAMEOBJECT "+father_in->name + ", SO "+name+"CAN'T BE THE CHILD" << endl;
+		}
+		else cout << "THE GAMEOBJECT CALLED " + name + " IS ALREADY THE CHILD OF " + father_in->name << endl;
 	}
-	else cout << "UN HIJO NO PUEDE SER SU PROPIO PADRe" << endl;
+	else cout << "A CHILD CAN'T BE ITS OWN FATHER" << endl;
 }
 
 GameObject GameObject::operator=(const GameObject& other)
@@ -123,7 +147,7 @@ GameObject::GameObject(string name_in, GameObjectsTags gameObjectTag_in, bool ac
 	tag = gameObjectTag_in;
 	lastID++;
 	ID = lastID;
-	Game::gameObjectsToAdd.push_back(this);
+	Game::gameObjects.push_back(this);
 }
 
 

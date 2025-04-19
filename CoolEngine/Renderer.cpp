@@ -16,16 +16,16 @@ void Renderer::Draw()
 {
 	if (isCircle)
 	{
-		DrawCircle(owner->transform->WorldPosition().x
-			, owner->transform->WorldPosition().y
+		DrawCircle(owner->transform->WorldPos().x
+			, owner->transform->WorldPos().y
 			, owner->transform->scale.x/2,
 			color);
 	}
 	else
 	{
 		//cout << ownerTransform. << endl;
-		DrawRectangle(owner->transform->WorldPosition().x
-			, owner->transform->WorldPosition().y
+		DrawRectangle(owner->transform->WorldPos().x
+			, owner->transform->WorldPos().y
 			, owner->transform->scale.x,
 			owner->transform->scale.y,
 			color);
