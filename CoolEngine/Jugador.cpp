@@ -13,7 +13,7 @@ Jugador::Jugador()
 }
 void Jugador::Update()
 {
-	owner->transform->position += Vec2::Right() * speed * GetFrameTime();
+	owner->transform->Move(Vec2::Right() * speed * GetFrameTime());
 }
 
 void Jugador::Start()

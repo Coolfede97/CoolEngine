@@ -24,6 +24,7 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Jugador.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="RayLibTranslator.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Vec2.cpp" />
@@ -36,6 +37,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Jugador.h" />
+    <ClInclude Include="RayLibTranslator.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="Vec2.h" />

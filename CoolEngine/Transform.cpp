@@ -22,15 +22,18 @@ Vec2 Transform::LocalPos()
 	return position;
 }
 
-
-
 Vec2 Transform::WorldPos()
 {
 	Vec2 screenHalfSize = Vec2(Game::screenSize.x / 2, Game::screenSize.y / 2);
 	if (owner->father != nullptr)
 	{
 		Vec2 fatherHalfSize = owner->father->transform->scale/2;
-		return fatherHalfSize + owner->father->transform->WorldPos() + position - scale / 2;
+		return fatherHalfSize + owner->father->transform->WorldPos();
 	}
-	return screenHalfSize + position - scale / 2;
+	return screenHalfSize + position;
+}
+
+void Transform::Move(Vec2 velocity)
+{
+	position += velocity;
 }

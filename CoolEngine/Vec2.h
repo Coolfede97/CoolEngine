@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <cmath>
-
+#include <raylib.h>
 class Vec2
 {
 public:
@@ -36,6 +36,8 @@ public:
     Vec2 operator*=(Vec2 other);
     Vec2 operator/=(Vec2 other);
     Vec2 operator*=(double number);
+
     friend std::ostream& operator<<(std::ostream& os, const Vec2& v);
 };
+
 

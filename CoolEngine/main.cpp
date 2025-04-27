@@ -5,7 +5,7 @@
 using namespace std;
 int main()
 {
-    Game game(1000, 300, 60, "Title");
+    Game game(854, 480, 60, "Title");
     while (!WindowShouldClose())
     {
         game.Tick();

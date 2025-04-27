@@ -9,6 +9,11 @@ class Renderer : public Component
 public:
 	Renderer();
 	void Draw() override;
-	bool isCircle;
+
+	Vec2 size;
+	Vec2 aspectRatio;
 	Color color;
+	Texture2D sprite;
+
+	void UpdateSpriteScale(Texture2D& tex);
 };

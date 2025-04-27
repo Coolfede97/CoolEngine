@@ -15,8 +15,8 @@ Game::Game(int width, int height, int fps, string title)
 	SetTargetFPS(fps);
 	Game::screenSize = Vec2(width, height);
 	
-	Start();
 	InitWindow(width, height, title.c_str());
+	Start();
 }
 
 Game::~Game() noexcept
@@ -34,20 +34,22 @@ bool Game::GameShouldClose() const
 // Equivalent to the hierarchy of Unity. Used for set up
 void Game::Start()
 {
-	GameObject* newGOR = new GameObject();
+	/*GameObject* newGOR = new GameObject();
 	newGOR->tag = GameObjectsTags::Jugador;
 	newGOR->transform->scale = Vec2(100, 50);
 	newGOR->AddComponent<Renderer>();
-	newGOR->GetComponent<Renderer>()->color = RED;
+	newGOR->GetComponent<Renderer>()->color = RED;*/
 
 	GameObject* newGO = new GameObject();
 	newGO->renderingIndex = 1;
 	newGO->tag = GameObjectsTags::Jugador;
-	newGO->transform->scale = Vec2(50, 50);
+	newGO->transform->scale = Vec2(0, 0);
+	newGO->transform->scale = Vec2(0.5, 0.5);
 	newGO->AddComponent<Renderer>();
 	newGO->GetComponent<Renderer>()->color = GREEN;
 	newGO->AddComponent<Jugador>();
-	newGO->MakeFatherOf(newGOR);
+	newGO->GetComponent<Jugador>()->speed = 0;
+	//newGO->MakeFatherOf(newGOR);
 	//newGOR->Destroy();
 }
 

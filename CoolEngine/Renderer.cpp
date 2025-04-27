@@ -1,33 +1,34 @@
 #include <iostream>
 using namespace std;
+#include "RayLibTranslator.h"
 #include "Renderer.h"
 #include "Component.h"
 #include "GameObject.h"
-#include "raylib.h"
+#include <assert.h>
 
+void Renderer::UpdateSpriteScale(Texture2D& tex)
+{
+	tex.width = tex.width * size.x * aspectRatio.x * owner->transform->scale.x;
+	tex.height = tex.height * size.y * aspectRatio.y * owner->transform->scale.y;
+}
 
 Renderer::Renderer()
 {
-	isCircle = false;
+	sprite = LoadTexture("Assets/Sprites/Timmy.png");
 	color = WHITE;
+	size = {1,1};
+	aspectRatio = { 1,1 };
 }
 
 void Renderer::Draw()
 {
-	if (isCircle)
-	{
-		DrawCircle(owner->transform->WorldPos().x
-			, owner->transform->WorldPos().y
-			, owner->transform->scale.x/2,
-			color);
-	}
-	else
-	{
-		//cout << ownerTransform. << endl;
-		DrawRectangle(owner->transform->WorldPos().x
-			, owner->transform->WorldPos().y
-			, owner->transform->scale.x,
-			owner->transform->scale.y,
-			color);
-	}
+	Texture2D spriteCopy = sprite;
+	Transform* myTransform = owner->transform;
+	
+	UpdateSpriteScale(spriteCopy);
+	Vector2 drawPos = RayVec(myTransform->WorldPos() - Vec2(spriteCopy.width/2,spriteCopy.height/2));
+	// That "1", represents that the Sprite is going to be drawn with its scale which has been modified
+	// by UpdateSpriteScale(). Changing it would mean to change its scale again, so don't do it :v
+	DrawTextureEx(spriteCopy, drawPos, owner->transform->rotation, 1, color);
 }
+

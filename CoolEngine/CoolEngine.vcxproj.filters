@@ -60,6 +60,9 @@
     <ClCompile Include="Renderer.cpp">
       <Filter>BaseComponents\cppFiles</Filter>
     </ClCompile>
+    <ClCompile Include="RayLibTranslator.cpp">
+      <Filter>Fundamentals\cppFiles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vec2.h">
@@ -91,6 +94,9 @@
     </ClInclude>
     <ClInclude Include="CoolPhysics.h">
       <Filter>Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="RayLibTranslator.h">
+      <Filter>Fundamentals\hFiles</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
