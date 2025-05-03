@@ -9,6 +9,7 @@ using namespace std;
 
 Vec2 Game::screenSize = Vec2(0, 0);
 vector<GameObject*> Game::gameObjects{};
+Assets Game::assets;
 Game::Game(int width, int height, int fps, string title)
 {
 	assert(!GetWindowHandle());
@@ -16,6 +17,7 @@ Game::Game(int width, int height, int fps, string title)
 	Game::screenSize = Vec2(width, height);
 	
 	InitWindow(width, height, title.c_str());
+	assets.LoadAssets();
 	Start();
 }
 
@@ -46,7 +48,7 @@ void Game::Start()
 	newGO->transform->scale = Vec2(0, 0);
 	newGO->transform->scale = Vec2(0.5, 0.5);
 	newGO->AddComponent<Renderer>();
-	newGO->GetComponent<Renderer>()->color = GREEN;
+	newGO->GetComponent<Renderer>()->color = WHITE;
 	newGO->AddComponent<Jugador>();
 	newGO->GetComponent<Jugador>()->speed = 0;
 	//newGO->MakeFatherOf(newGOR);
@@ -86,11 +88,12 @@ void Game::Update()
 	vector<GameObject*> updateGOS = gameObjects;
 	for (auto& GO : updateGOS)
 	{
-		if (GO == nullptr)
+		assert(GO != nullptr);
+		/*if (GO == nullptr)
 		{
 			cout << "NULL POINTER" << endl;
 			continue;
-		}
+		}*/
 		GO->Update();
 	}
 }

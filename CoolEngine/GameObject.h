@@ -8,7 +8,7 @@ using namespace std;
 #include <unordered_map>
 #include <vector>
 #include <atomic>
-
+#include "AssetsReferencerer.h"
 
 class GameObject
 {

@@ -14,7 +14,7 @@ void Renderer::UpdateSpriteScale(Texture2D& tex)
 
 Renderer::Renderer()
 {
-	sprite = LoadTexture("Assets/Sprites/Timmy.png");
+	sprite = Game::assets.sprites.timmy;
 	color = WHITE;
 	size = {1,1};
 	aspectRatio = { 1,1 };
@@ -27,6 +27,7 @@ void Renderer::Draw()
 	
 	UpdateSpriteScale(spriteCopy);
 	Vector2 drawPos = RayVec(myTransform->WorldPos() - Vec2(spriteCopy.width/2,spriteCopy.height/2));
+
 	// That "1", represents that the Sprite is going to be drawn with its scale which has been modified
 	// by UpdateSpriteScale(). Changing it would mean to change its scale again, so don't do it :v
 	DrawTextureEx(spriteCopy, drawPos, owner->transform->rotation, 1, color);

@@ -30,7 +30,7 @@ public:
 	void Tick();
 
 	static vector<GameObject*> gameObjects;
-
+	static Assets assets;
 private:
 	void Draw();
 	void Update();

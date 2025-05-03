@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AssetsReferencerer.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -30,6 +31,7 @@
     <ClCompile Include="Vec2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AssetsReferencerer.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="CoolComponents.h" />
     <ClInclude Include="CoolEngine.h" />

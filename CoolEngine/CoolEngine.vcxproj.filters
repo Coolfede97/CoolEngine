@@ -63,6 +63,9 @@
     <ClCompile Include="RayLibTranslator.cpp">
       <Filter>Fundamentals\cppFiles</Filter>
     </ClCompile>
+    <ClCompile Include="AssetsReferencerer.cpp">
+      <Filter>Fundamentals\cppFiles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vec2.h">
@@ -96,6 +99,9 @@
       <Filter>Containers</Filter>
     </ClInclude>
     <ClInclude Include="RayLibTranslator.h">
+      <Filter>Fundamentals\hFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetsReferencerer.h">
       <Filter>Fundamentals\hFiles</Filter>
     </ClInclude>
   </ItemGroup>
